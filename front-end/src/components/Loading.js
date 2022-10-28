@@ -6,7 +6,7 @@ export default class Loading extends Component {
     return (
       <div className="loading">
         <h1>Loading...</h1>
-        <img className="coffee" src={ icon } alt="loadingCoffee" />
+        <img src={ icon } alt="loadingCoffee" />
       </div>
     );
   }
