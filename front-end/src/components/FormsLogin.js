@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import RegisterBtn from './RegisterBtn';
+import LoginBtn from './LoginBtn';
+import MsgErrorLogin from './MsgErrorLogin';
 
 export default class Loading extends Component {
   constructor() {
@@ -11,44 +13,30 @@ export default class Loading extends Component {
   render() {
     return (
       <div>
-        <form className="login">
-          <label className="label" htmlFor="email">
-            Email
+        <form>
+          <label htmlFor="email">
+            Login
             <input
               type="email"
               name="email"
               id="email"
-              placeholder="Type your email"
-              data-testid="input-gravatar-email"
+              placeholder="Email"
+              data-testid="common_login__input-email"
             />
           </label>
-          <label className="label" htmlFor="name">
-            Name
+          <label htmlFor="senha">
+            Senha
             <input
               type="text"
-              id="name"
-              name="name"
-              placeholder="Type your name"
-              data-testid="input-player-name"
+              id="senha"
+              name="senha"
+              placeholder="Senha"
+              data-testid="common_login__input-password"
             />
           </label>
-          <button
-            type="button"
-            name="login-button"
-            data-testid="btn-play"
-          >
-            Login
-          </button>
-          <Link to="/cadastro">
-            <button
-              className="button-config"
-              type="button"
-              name="config-button"
-              data-testid="btn-settings"
-            >
-              Ainda não tenho conta
-            </button>
-          </Link>
+          <LoginBtn />
+          <RegisterBtn />
+          <MsgErrorLogin />
         </form>
       </div>
     );

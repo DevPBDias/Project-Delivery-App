@@ -7,7 +7,6 @@ export default class LogoGroup extends Component {
     return (
       <div>
         <img
-          className="App-logo"
           src={ logo }
           width="200px"
           alt="Logo do grupo"
