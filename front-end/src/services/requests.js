@@ -9,15 +9,15 @@ export const setToken = (token) => {
 };
 
 export const requestData = async (endpoint) => {
-  const { data } = await api.get(endpoint);
+  const { data } = await api.get(endpoint)
+    .catch((error) => error.response.data);
   console.log('Data:', data);
   return data;
 };
 
 export const requestLogin = async (endpoint, body) => {
-  const { data } = await api.post(endpoint, body);
+  const { data } = await api.post(endpoint, body)
+    .catch((error) => error.response.data);
   console.log('Login:', data);
   return data;
 };
-
-export default api;
