@@ -21,3 +21,10 @@ export const requestLogin = async (endpoint, body) => {
   console.log('Login:', data);
   return data;
 };
+
+export const requestRegister = async (endpoint, body) => {
+  const { data } = await api.post(endpoint, body)
+    .catch((error) => error.response.data);
+  console.log('Register:', data);
+  return data;
+};
