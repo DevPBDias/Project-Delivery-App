@@ -16,8 +16,8 @@ export const requestData = async (endpoint) => {
 };
 
 export const requestLogin = async (endpoint, body) => {
-  const { data } = await api.post(endpoint, body)
-    .catch((error) => error.response.data);
+  const data = await api.post(endpoint, body)
+    .catch((error) => error.message);
   console.log('Login:', data);
   return data;
 };
