@@ -33,7 +33,6 @@ class SaleRepository extends BaseRepository {
     });
     const mappedOrders = orders.map((e) =>
       ({ ...e.get(), products: handdleMap(e.get().products) }));
-    console.log(mappedOrders);
     return mappedOrders;
   }
 
