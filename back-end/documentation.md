@@ -14,7 +14,6 @@
   | Parâmetro   | Tipo       | Descrição                           |
   | :---------- | :--------- | :---------------------------------- |
   | `Auth` | `none` | Não é necessário autenticação com o token |
-  | `body` | `login` | **Obrigatório.** Email e senha do usuário representado em JSON |
 
   ##### Exemplo de JSON Body request:
   ```
@@ -94,7 +93,6 @@
   | Parâmetro   | Tipo       | Descrição                           |
   | :---------- | :--------- | :---------------------------------- |
   | `Auth` | `none` | Não é necessário autenticação com o token |
-  | `body` | `user` | **Obrigatório.** O usuário representado em JSON |
 
   ##### Exemplo de JSON Body request:
   ```
