@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import RegisterBtn from './RegisterBtn';
 import { requestLogin, setToken } from '../services/requests';
 
-function FormsLogin() {
+export default function FormsLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [userRole, setUserRole] = useState('');
-  const [isLogged, setIsLogged] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [failedTryLogin, setFailedTryLogin] = useState(false);
   const history = useHistory();
 
@@ -17,25 +16,26 @@ function FormsLogin() {
     try {
       const { token, role } = await requestLogin('/login', { email, password });
       setToken(token);
-      setUserRole(role);
 
       localStorage.setItem('token', token);
       localStorage.setItem('role', role);
 
-      setIsLogged(true);
+      history.push('/customer/products');
     } catch (error) {
       setFailedTryLogin(true);
-      setIsLogged(false);
+      setErrorMsg('Não foi possível efetuar login, tente novamente');
     }
   };
 
-  useEffect(() => {
-    setFailedTryLogin(false);
-  }, [email, password]);
+  const handleBtn = () => {
+    const regexEmail = /^\S+@\S+\.\S+$/;
+    const emailValid = regexEmail.test(email);
 
-  if (isLogged) {
-    history.push(`${userRole}`);
-  }
+    const five = 5;
+    const pwdValid = password.length > five;
+
+    return emailValid && pwdValid;
+  };
 
   return (
     <div>
@@ -66,7 +66,7 @@ function FormsLogin() {
         </label>
         {
           failedTryLogin ? (
-            <p data-testid="common_login__element-invalid-email">Mensagens de erro</p>
+            <p data-testid="common_login__element-invalid-email">{ errorMsg }</p>
           ) : ''
         }
         <button
@@ -74,6 +74,7 @@ function FormsLogin() {
           name="login-button"
           data-testid="common_login__button-login"
           onClick={ (event) => handleClick(event) }
+          disabled={ !handleBtn() }
         >
           Login
         </button>
@@ -82,5 +83,3 @@ function FormsLogin() {
     </div>
   );
 }
-
-export default FormsLogin;
