@@ -1,15 +1,25 @@
-import React from 'react';
-import './App.css';
-import rockGlass from './images/rockGlass.svg';
+import React, { useEffect, useState } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import Login from './pages/Login';
+import User from './pages/User';
 
 function App() {
+  const [entrance, setEntrance] = useState(false);
+
+  useEffect(() => {
+    setEntrance(true);
+  }, []);
+
   return (
-    <div className="App">
-      <span className="logo">TRYBE</span>
-      <object className="rocksGlass" type="image/svg+xml" data={ rockGlass }>
-        Glass
-      </object>
-    </div>
+    <Switch>
+      <Route
+        exact
+        path="/"
+        render={ () => (entrance ? <Redirect to="/login" /> : null) }
+      />
+      <Route exact path="/login" component={ Login } />
+      <Route exact path="/customer/products" component={ User } />
+    </Switch>
   );
 }
 
