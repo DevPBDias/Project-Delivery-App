@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default class RegisterBtn extends Component {
-  render() {
-    return (
-      <div>
+function RegisterBtn() {
+  return (
+    <div>
+      <Link to="/register">
         <button
           type="button"
           name="register-button"
@@ -11,7 +12,9 @@ export default class RegisterBtn extends Component {
         >
           Ainda não tenho conta
         </button>
-      </div>
-    );
-  }
+      </Link>
+    </div>
+  );
 }
+
+export default RegisterBtn;
