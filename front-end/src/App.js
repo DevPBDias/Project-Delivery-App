@@ -1,15 +1,27 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Checkout from './pages/Checkout';
+import React, { useEffect, useState } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
+import User from './pages/User';
+import Checkout from './pages/Checkout';
 
 function App() {
+  const [entrance, setEntrance] = useState(false);
+
+  useEffect(() => {
+    setEntrance(true);
+  }, []);
+
   return (
-    <Routes>
+    <Switch>
+      <Route
+        exact
+        path="/"
+        render={ () => (entrance ? <Redirect to="/login" /> : null) }
+      />
+      <Route exact path="/login" component={ Login } />
       <Route path="customer/checkout" element={ <Checkout /> } />
-      <Route path="login" element={ <Login /> } />
-      <Route exact path="/" element={ <Navigate to="/Login" /> } />
-    </Routes>
+      <Route exact path="/customer/products" component={ User } />
+    </Switch>
   );
 }
 
