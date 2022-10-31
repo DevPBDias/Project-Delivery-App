@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { setToken, requestRegister } from '../services/requests';
-
+//
 function FormRegister() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
