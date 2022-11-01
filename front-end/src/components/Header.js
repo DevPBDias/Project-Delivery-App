@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import ProductsBtn from './ProductsBtn';
+import OrdersBtn from './CustomerOrdersBtn';
+import LogOutBtn from './LogOutBtn';
 
-function Header({
-  FirstNavigationLink,
-  SecondNavegationLink,
-  ThirdNavegationLink,
-}) {
+function Header() {
   const [userName, setName] = useState();
   useEffect(() => {
     async function sales() {
@@ -20,20 +18,15 @@ function Header({
   }, [userName]);
   return (
     <div className="buttons-content">
-      <FirstNavigationLink />
-      <SecondNavegationLink />
+      <ProductsBtn />
+      <OrdersBtn />
       <h3
         data-testid="customer_products__element-navbar-user-full-name"
       >
         {userName}
       </h3>
-      <ThirdNavegationLink />
+      <LogOutBtn />
     </div>
   );
 }
-Header.propTypes = {
-  FirstNavigationLink: PropTypes.elementType.isRequired,
-  SecondNavegationLink: PropTypes.elementType.isRequired,
-  ThirdNavegationLink: PropTypes.elementType.isRequired,
-};
 export default Header;
