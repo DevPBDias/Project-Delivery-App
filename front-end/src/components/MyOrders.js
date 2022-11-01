@@ -46,7 +46,6 @@ function MyOrders() {
             </p>
             <p data-testid=" customer_orders__element-delivery-status-<id>">
               {`${order.status}`}
-
             </p>
             <p data-testid="customer_orders__element-order-date-<id>">
               {`${dateFormat(order.saleDate)}`}
