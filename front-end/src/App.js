@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
-import User from './pages/User';
+// import User from './pages/User';
 import Register from './pages/Register';
 import Products from './pages/Products';
 
