@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import ClientOrders from './pages/ClientOrders';
 import Login from './pages/Login';
 import User from './pages/User';
+import Register from './pages/Register';
 
 function App() {
   const [entrance, setEntrance] = useState(false);
@@ -21,6 +22,7 @@ function App() {
       <Route exact path="/login" component={ Login } />
       <Route exact path="/customer/products" component={ User } />
       <Route exact path="/customer/orders" component={ ClientOrders } />
+      <Route exact path="/register" component={ Register } />
     </Switch>
   );
 }
