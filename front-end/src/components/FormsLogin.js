@@ -14,11 +14,11 @@ export default function FormsLogin() {
     event.preventDefault();
 
     try {
-      const { token, role } = await requestLogin('/login', { email, password });
+      const data = await requestLogin('/login', { email, password });
       setToken(token);
 
-      localStorage.setItem('token', token);
-      localStorage.setItem('role', role);
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('userLogged', data);
 
       history.push('/customer/products');
     } catch (error) {
