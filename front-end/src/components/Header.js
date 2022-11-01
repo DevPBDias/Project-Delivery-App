@@ -8,7 +8,7 @@ function Header() {
   useEffect(() => {
     async function sales() {
       try {
-        const user = JSON.parse(localStorage.getItem('userLogged'));
+        const user = JSON.parse(localStorage.getItem('user'));
         setName(user.name);
       } catch (error) {
         console.log(error);
