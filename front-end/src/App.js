@@ -19,7 +19,7 @@ function App() {
         render={ () => (entrance ? <Redirect to="/login" /> : null) }
       />
       <Route exact path="/login" component={ Login } />
-      <Route path="customer/checkout" element={ <Checkout /> } />
+      <Route exact path="/customer/checkout" component={ Checkout } />
       <Route exact path="/customer/products" component={ User } />
     </Switch>
   );

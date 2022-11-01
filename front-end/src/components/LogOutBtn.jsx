@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 
 function LogOutBtn() {
   const linkProduct = (
-    <Link data-testid="??????" to="/login">
+    <Link
+      data-testid="customer_products__element-navbar-link-logout"
+      to="/login"
+    >
       Sair
     </Link>);
   return (linkProduct);

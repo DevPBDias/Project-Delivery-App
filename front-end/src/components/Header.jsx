@@ -1,20 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import { useNavigate } from 'react-router-dom';
 
 function Header({
   FirstNavigationLink,
   SecondNavegationLink,
   ThirdNavegationLink,
 }) {
+  const [userName, setName] = useState();
+
+  useEffect(() => {
+    async function sales() {
+      try {
+        const user = JSON.parse(localStorage.getItem('userLogged'));
+        setName(user.name);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    sales();
+  }, [userName]);
+
   return (
-    <header className="common-header">
-      <div className="buttons-content">
-        <FirstNavigationLink />
-        <SecondNavegationLink />
-        <ThirdNavegationLink />
-      </div>
-    </header>
+    <div className="buttons-content">
+      <FirstNavigationLink />
+      <SecondNavegationLink />
+      <h3
+        data-testid="customer_products__element-navbar-user-full-name"
+      >
+        {userName}
+
+      </h3>
+      <ThirdNavegationLink />
+    </div>
   );
 }
 

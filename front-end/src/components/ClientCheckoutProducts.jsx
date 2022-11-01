@@ -26,7 +26,7 @@ function ClientCheckoutProducts({
             },
             index,
           ) => (
-            <tr key="batata">
+            <tr key="tableTr">
               <td
                 className="dontKnowYet"
                 data-testid={ `dontKnowToo${index + 1}` }

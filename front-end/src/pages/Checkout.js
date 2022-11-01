@@ -36,6 +36,7 @@ function Checkout() {
     });
     return sum.toFixed(2);
   }
+
   return (
     <div className="checkout-body">
       <Header
@@ -49,7 +50,12 @@ function Checkout() {
         <ClientCheckoutProducts
           productsArray={ arrayProductsMock }
         />
-        {`Total:R$ ${calcTotal(arrayProductsMock)}`}
+        <p
+          data-testid="customer_checkout__element-order-total-price"
+        >
+          {`Total:R$ ${calcTotal(arrayProductsMock)}`}
+
+        </p>
       </div>
       <div className="details-and-delivery-addres">
         <h2>Detalhes e Endereço para Entrega</h2>

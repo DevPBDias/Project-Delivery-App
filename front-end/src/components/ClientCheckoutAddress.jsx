@@ -1,4 +1,5 @@
 import React from 'react';
+import SelectSellers from './SelectSellers';
 // import PropTypes from 'prop-types';
 // import { useNavigate } from 'react-router-dom';
 
@@ -14,21 +15,21 @@ function ClientCheckoutAddress() {
         </tr>
       </thead>
       <tbody>
-        <tr key="batata">
+        <tr key="table">
           <td
-            className="dontKnowYet"
+            className="vendedora"
+            data-testid="dontKnowToo"
+          >
+            <SelectSellers />
+          </td>
+          <td
+            className="endereco"
             data-testid="dontKnowToo"
           >
             <input type="text" name="input" placeholder="digite aqui" />
           </td>
           <td
-            className="dontKnowYet"
-            data-testid="dontKnowToo"
-          >
-            <input type="text" name="input" placeholder="digite aqui" />
-          </td>
-          <td
-            className="dontKnowYet"
+            className="numero"
             data-testid="dontKnowToo"
           >
             <input type="text" name="input" placeholder="digite aqui" />
