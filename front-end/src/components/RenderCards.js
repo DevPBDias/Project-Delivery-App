@@ -1,26 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { requestData } from '../services/requests';
+import React, { useContext, useEffect } from 'react';
+import Context from '../context/Context';
 import ProductCard from './ProductCard';
 
 export default function RenderCards() {
-  const [productsArray, setProductsArray] = useState([]);
+  const {
+    productsArray,
+    value,
+  } = useContext(Context);
 
   useEffect(() => {
     async function products() {
       try {
-        const getProducts = await requestData('/customer/products');
-        console.log(getProducts); // lembrar de comentar essa linha
-        setProductsArray(getProducts);
+        console.log(value); // lembrar de comentar essa linha
       } catch (error) {
         console.log(error);
       }
     }
     products();
-  }, []);
+  }, [value]);
 
   return (
     <div>
-      {productsArray.map((elP) => <ProductCard key={ elP.id } item={ elP } />)}
+      {productsArray
+        .map((elP) => <ProductCard key={ elP.id } item={ elP } value={ value } />)}
     </div>
   );
 }
