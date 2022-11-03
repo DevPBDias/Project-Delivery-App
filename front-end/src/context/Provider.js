@@ -4,14 +4,14 @@ import Context from './Context';
 import { requestData } from '../services/requests';
 
 function Provider({ children }) {
-  const [value, setValue] = useState([]);
+  const [checkoutArray, setCheckoutArray] = useState([]);
   const [productsArray, setProductsArray] = useState([]);
 
   useEffect(() => {
     async function products() {
       try {
         const getProducts = await requestData('/customer/products');
-        console.log(getProducts); // lembrar de comentar essa linha
+        // console.log(getProducts); // lembrar de comentar essa linha
         setProductsArray(getProducts);
       } catch (error) {
         console.log(error);
@@ -21,13 +21,13 @@ function Provider({ children }) {
   }, []);
 
   const contextType = {
-    value,
-    setValue,
+    checkoutArray,
+    setCheckoutArray,
     productsArray,
     setProductsArray,
   };
 
-  const contextTypeTest = useMemo(() => (contextType), [value, productsArray]);
+  const contextTypeTest = useMemo(() => (contextType), [checkoutArray, productsArray]);
 
   return (
     <Context.Provider value={ contextTypeTest }>

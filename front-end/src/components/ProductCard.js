@@ -1,34 +1,78 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Context from '../context/Context';
 
 function ProductCard({
   item,
-  value,
+  indexP,
+  onChange,
 }) {
   const {
-    setValue,
     productsArray,
   } = useContext(Context);
 
+  const [inputValue, setInputValue] = useState(0);
+  const [change, setChange] = useState(false);
+
   const oldValue = item.price;
 
-  const handleColumn = ({ target }) => {
-    const findProduct = productsArray.filter((elP) => elP.name === target.name);
-    setValue((oldArray) => [...oldArray, findProduct[0]]);
-    console.log(price);
+  const onChangeHandler = (event) => {
+    setInputValue(Number(event.target.value));
   };
 
-  const handleColumnMinus = ({ target }) => {
-    if (value === 0) return setValue(0);
-    const index1 = value.findIndex((elP) => elP.name === target.name);
-    setValue(value.filter((_, index) => index !== index1));
+  const handleColumnPlus = () => {
+    setInputValue(inputValue + 1);
   };
 
-  const getCount = () => {
-    const filter = value.filter((elP) => elP.name === item.name);
-    return filter.length;
+  const handleColumnMinus = () => {
+    if (inputValue === 0) return setInputValue(0);
+    setInputValue(inputValue - 1);
   };
+
+  useEffect(() => {
+    async function didMountProducts() {
+      try {
+        const createArrayQty = productsArray.map((elP) => {
+          const arrayWithQty = {
+            ...elP,
+            qty: 0,
+          };
+          return arrayWithQty;
+        });
+        localStorage.setItem('carrinho', JSON.stringify(createArrayQty));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    didMountProducts();
+  }, []);
+
+  useEffect(() => {
+    async function getQtyProducts() {
+      try {
+        setChange(true);
+        if (change === true) {
+          const getArrayLS = [...JSON.parse(localStorage.getItem('carrinho'))];
+          getArrayLS[indexP].qty = inputValue;
+          localStorage.setItem('carrinho', JSON.stringify(getArrayLS));
+
+          const getFromLS = JSON.parse(localStorage.getItem('carrinho'));
+
+          let sum = 0;
+          getFromLS.forEach((el) => {
+            const elSum = el.qty * Number(el.price);
+            sum += elSum;
+          });
+          console.log(sum);
+          localStorage.setItem('valorTotal', sum); // verificar necessidade de salvar o valor total no localStorage
+          onChange(sum);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getQtyProducts();
+  }, [inputValue]);
 
   return (
     <div
@@ -64,13 +108,15 @@ function ProductCard({
 
         </button>
         <input
-          value={ getCount() }
+          name={ item.name }
+          value={ inputValue }
+          onChange={ onChangeHandler }
           size="1"
           data-testid={ `customer_products__input-card-quantity-${item.id}` }
         />
         <button
           name={ item.name }
-          onClick={ handleColumn }
+          onClick={ handleColumnPlus }
           data-testid={ `customer_products__button-card-add-item-${item.id}` }
           type="button"
         >
@@ -83,7 +129,8 @@ function ProductCard({
 }
 ProductCard.propTypes = {
   item: PropTypes.objectOf(PropTypes.string).isRequired,
-  value: PropTypes.objectOf(PropTypes.string).isRequired,
+  indexP: PropTypes.number.isRequired,
+  onChange: PropTypes.number.isRequired,
 };
 
 export default ProductCard;
