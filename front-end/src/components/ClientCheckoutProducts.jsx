@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 function ClientCheckoutProducts({
   productsArray,
   formatPrice,
+  onClick,
 }) {
   const verifyQty = productsArray.filter((elP) => elP.qty > 0);
 
@@ -69,7 +70,13 @@ function ClientCheckoutProducts({
                 data-testid={ 'customer_checkout__element-order-table-remove-'
                 + `${index}` }
               >
-                <button type="button">Remover</button>
+                <button
+                  type="button"
+                  onClick={ () => onClick(name) }
+                >
+                  Remover
+
+                </button>
               </td>
             </tr>
           ))
@@ -82,6 +89,7 @@ function ClientCheckoutProducts({
 ClientCheckoutProducts.propTypes = {
   productsArray: PropTypes.elementType.isRequired,
   formatPrice: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ClientCheckoutProducts;

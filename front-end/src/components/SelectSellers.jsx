@@ -3,10 +3,12 @@ import { requestData } from '../services/requests';
 
 function SelectSellers() {
   const [sellersArray, setSellers] = useState([]);
+
   useEffect(() => {
     async function getSellers() {
       try {
         const data = await requestData('/user/get-all');
+        console.log(data);
         const filterSeller = data.filter((person) => person.role === 'seller');
         setSellers(filterSeller);
       } catch (error) {
@@ -14,7 +16,7 @@ function SelectSellers() {
       }
     }
     getSellers();
-  }, [sellersArray]);
+  }, []);
 
   const sellers = (
     <div>
