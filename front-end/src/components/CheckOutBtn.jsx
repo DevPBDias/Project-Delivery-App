@@ -1,14 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function CheckOutBtn() {
+  const history = useHistory();
   const linkProduct = (
-    <Link
+    <button
+      type="button"
       data-testid="customer_checkout__button-submit-order"
-      to="customer/orders/<id>"
+      onClick={ () => history.push('/customer/orders/:id') }
     >
-      FINALIZAR PEDIDO
-    </Link>);
+      <p>
+        FINALIZAR PEDIDO
+      </p>
+    </button>);
   return (linkProduct);
 }
 

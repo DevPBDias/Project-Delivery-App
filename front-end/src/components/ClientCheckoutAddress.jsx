@@ -18,21 +18,28 @@ function ClientCheckoutAddress() {
         <tr key="table">
           <td
             className="vendedora"
-            data-testid="dontKnowToo"
           >
             <SelectSellers />
           </td>
           <td
             className="endereco"
-            data-testid="dontKnowToo"
           >
-            <input type="text" name="input" placeholder="digite aqui" />
+            <input
+              data-testid="customer_checkout__input-address"
+              type="text"
+              name="input"
+              placeholder="digite aqui"
+            />
           </td>
           <td
             className="numero"
-            data-testid="dontKnowToo"
           >
-            <input type="text" name="input" placeholder="digite aqui" />
+            <input
+              data-testid="customer_checkout__input-address-number"
+              type="text"
+              name="input"
+              placeholder="digite aqui"
+            />
           </td>
         </tr>
       </tbody>

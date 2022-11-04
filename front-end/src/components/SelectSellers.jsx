@@ -19,7 +19,7 @@ function SelectSellers() {
   const sellers = (
     <div>
       <form>
-        <select customer_checkout__select-seller>
+        <select data-testid="customer_checkout__select-seller">
           {sellersArray
             .map((el) => <option key={ el.email } value={ el.id }>{el.name}</option>)}
         </select>

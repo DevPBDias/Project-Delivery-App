@@ -14,12 +14,11 @@ export default function FormsLogin() {
     event.preventDefault();
 
     try {
+      // Substituimos a desconstrução do token e roles pelo data;
       const data = await requestLogin('/login', { email, password });
       setToken(data.token);
-
-      localStorage.setItem('userLogged', JSON.stringify(data));
+      localStorage.setItem('user', JSON.stringify(data));
       localStorage.setItem('token', data.token);
-      localStorage.setItem('role', data.role);
 
       history.push('/customer/products');
     } catch (error) {

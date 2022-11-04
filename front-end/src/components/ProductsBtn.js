@@ -7,9 +7,10 @@ function ProductsBtn() {
       data-testid="customer_products__element-navbar-link-products"
       to="/customer/products"
     >
+
       PRODUTOS
+
     </Link>);
   return (linkProduct);
 }
-
 export default ProductsBtn;

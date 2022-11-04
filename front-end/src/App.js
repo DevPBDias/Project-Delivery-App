@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import Provider from './context/Provider';
 import Login from './pages/Login';
-import User from './pages/User';
+// import User from './pages/User';
+import Register from './pages/Register';
+import Products from './pages/Products';
 import Checkout from './pages/Checkout';
 
 function App() {
@@ -12,16 +15,19 @@ function App() {
   }, []);
 
   return (
-    <Switch>
-      <Route
-        exact
-        path="/"
-        render={ () => (entrance ? <Redirect to="/login" /> : null) }
-      />
-      <Route exact path="/login" component={ Login } />
-      <Route exact path="/customer/checkout" component={ Checkout } />
-      <Route exact path="/customer/products" component={ User } />
-    </Switch>
+    <Provider>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={ () => (entrance ? <Redirect to="/login" /> : null) }
+        />
+        <Route exact path="/login" component={ Login } />
+        <Route exact path="/customer/products" component={ Products } />
+        <Route exact path="/customer/checkout" component={ Checkout } />
+        <Route exact path="/register" component={ Register } />
+      </Switch>
+    </Provider>
   );
 }
 
