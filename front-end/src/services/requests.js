@@ -28,3 +28,10 @@ export const requestRegister = async (endpoint, body) => {
   console.log('Register:', data);
   return data;
 };
+
+export const requestCheckout = async (endpoint, body) => {
+  const { data } = await api.post(endpoint, body)
+    .catch((error) => error.response.data);
+  console.log('Checkout:', data);
+  return data.id;
+};

@@ -13,14 +13,11 @@ function Checkout() {
 
   const handleRemove = (name) => {
     const removeArray = arrayProducts.filter((elP) => elP.name !== name);
-    console.log(name);
     setCheckoutArray(removeArray);
     localStorage.setItem('carrinho', JSON.stringify(removeArray));
     console.log(checkoutArray);
 
     const arrayToCalc = JSON.parse(localStorage.getItem('carrinho'));
-
-    console.log(arrayToCalc);
 
     let sum = 0;
     arrayToCalc.forEach((el) => {

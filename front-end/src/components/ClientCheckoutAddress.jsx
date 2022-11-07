@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SelectSellers from './SelectSellers';
-// import PropTypes from 'prop-types';
-// import { useNavigate } from 'react-router-dom';
 
 function ClientCheckoutAddress() {
+  const [address, setAddress] = useState('');
+  const [number, setNumber] = useState('');
+
+  const getAddress = ({ target }) => {
+    setAddress(target.value);
+    localStorage.setItem('address', JSON.stringify(target.value));
+  };
+
+  const getNumber = ({ target }) => {
+    setNumber(target.value);
+    localStorage.setItem('number', JSON.stringify(target.value));
+  };
+
   return (
 
     <table className="client-checkout-address">
       <thead>
         <tr>
-          <th data-testid="dontKnowYet">P. Vendedora Responsável</th>
-          <th data-testid="dontKnowYet">Endereço</th>
-          <th data-testid="dontKnowYet">Número</th>
+          <th>P. Vendedora Responsável</th>
+          <th>Endereço</th>
+          <th>Número</th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +36,8 @@ function ClientCheckoutAddress() {
             className="endereco"
           >
             <input
+              onChange={ getAddress }
+              value={ address }
               data-testid="customer_checkout__input-address"
               type="text"
               name="input"
@@ -35,6 +48,8 @@ function ClientCheckoutAddress() {
             className="numero"
           >
             <input
+              onChange={ getNumber }
+              value={ number }
               data-testid="customer_checkout__input-address-number"
               type="text"
               name="input"
