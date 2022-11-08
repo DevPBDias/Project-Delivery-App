@@ -40,6 +40,7 @@ function ProductCard({
           return arrayWithQty;
         });
         localStorage.setItem('carrinho', JSON.stringify(createArrayQty));
+        localStorage.setItem('valorTotal', 0);
       } catch (error) {
         console.log(error);
       }

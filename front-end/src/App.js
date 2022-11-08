@@ -5,6 +5,7 @@ import Login from './pages/Login';
 // import User from './pages/User';
 import Register from './pages/Register';
 import Products from './pages/Products';
+import Checkout from './pages/Checkout';
 
 function App() {
   const [entrance, setEntrance] = useState(false);
@@ -23,6 +24,7 @@ function App() {
         />
         <Route exact path="/login" component={ Login } />
         <Route exact path="/customer/products" component={ Products } />
+        <Route exact path="/customer/checkout" component={ Checkout } />
         <Route exact path="/register" component={ Register } />
       </Switch>
     </Provider>
