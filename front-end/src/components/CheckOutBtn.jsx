@@ -14,14 +14,14 @@ function CheckOutBtn() {
       }));
       localStorage.setItem('produtos', JSON.stringify(qty));
       const getUserId = JSON.parse(localStorage.getItem('user'));
-      // const getSellerId = JSON.parse(localStorage.getItem('selectedSeller'));
+      const getSellerId = JSON.parse(localStorage.getItem('sellectedSeller'));
       const getTotalPrice = JSON.parse(localStorage.getItem('valorTotal'));
       const getDeliveryAddress = JSON.parse(localStorage.getItem('address'));
       const getDeliveryNumber = JSON.parse(localStorage.getItem('number'));
 
       const bodyCheckout = {
         userId: Number(getUserId.id),
-        sellerId: 2,
+        sellerId: 2 || Number(getSellerId.id),
         totalPrice: Number(parseFloat(getTotalPrice).toFixed(2)),
         deliveryAddress: getDeliveryAddress,
         deliveryNumber: getDeliveryNumber,
