@@ -35,3 +35,10 @@ export const requestCheckout = async (endpoint, body) => {
   console.log('Checkout:', data);
   return data.id;
 };
+
+export const requestOrderDetails = async (endpoint, body) => {
+  const { data } = await api.get(endpoint, body)
+    .catch((error) => error.response.data);
+  console.log('OrderDetails:', data);
+  return data;
+};
