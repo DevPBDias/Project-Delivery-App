@@ -11,6 +11,7 @@ import SellerOrder from './pages/SellerOrder';
 
 function App() {
   const [entrance, setEntrance] = useState(false);
+
   const history = useHistory();
 
   useEffect(() => {
