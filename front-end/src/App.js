@@ -20,8 +20,12 @@ function App() {
 
   useEffect(() => {
     const userLogged = localStorage.getItem('user');
-    if (userLogged) {
+
+    if (userLogged && userLogged.role === 'customer') {
       history.push('/customer/products');
+    }
+    if (userLogged && userLogged.role === 'seller') {
+      history.push('/seller/products');
     }
   }, [history]);
 
