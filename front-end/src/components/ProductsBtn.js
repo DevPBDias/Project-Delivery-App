@@ -6,6 +6,7 @@ function ProductsBtn({ role }) {
   const history = useHistory();
 
   const products = () => {
+    console.log(role);
     if (role === 'customer') {
       history.push('/customer/products');
     } else if (role === 'seller') {
@@ -18,7 +19,7 @@ function ProductsBtn({ role }) {
   const linkProduct = (
     <button
       type="button"
-      onClick={ products }
+      onClick={ () => products() }
       data-testid="customer_products__element-navbar-link-products"
     >
       PRODUTOS

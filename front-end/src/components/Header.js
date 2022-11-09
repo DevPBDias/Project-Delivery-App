@@ -6,15 +6,25 @@ import LogOutBtn from './LogOutBtn';
 function Header() {
   const user = JSON.parse(localStorage.getItem('user'));
   const [userRole, setUserRole] = useState();
+  const renderBtn = (role) => {
+    if (role === 'customer') {
+      return (
+        <div>
+          <OrdersBtn role={ role } />
+          <ProductsBtn role={ role } />
+        </div>
+      );
+    }
+    return <OrdersBtn role={ role } />;
+  };
 
   useEffect(() => {
     setUserRole(user.role);
-  }, [user.role]);
+  }, []);
 
   return (
     <div className="buttons-content">
-      <ProductsBtn role={ userRole } />
-      <OrdersBtn role={ userRole } />
+      {renderBtn(userRole)}
       <h3
         data-testid="customer_products__element-navbar-user-full-name"
       >
