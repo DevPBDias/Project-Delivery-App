@@ -5,8 +5,13 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Products from './pages/Products';
 import Checkout from './pages/Checkout';
+<<<<<<< HEAD
 import User from './pages/User';
 import ClientOrders from './pages/ClientOrders';
+=======
+import CustomerOrderDetails from './pages/CustomerOrderDetails';
+import SellerOrder from './pages/SellerOrder';
+>>>>>>> c0a45a1bab639ca603ff475892f967deb4378e1c
 
 function App() {
   const [entrance, setEntrance] = useState(false);
@@ -42,6 +47,8 @@ function App() {
         <Route exact path="/customer/orders/:id" component={ User } />
         <Route exact path="/customer/checkout" component={ Checkout } />
         <Route exact path="/register" component={ Register } />
+        <Route exact path="/customer/orders/:id" component={ CustomerOrderDetails } />
+        <Route exact path="/seller/orders" component={ SellerOrder } />
       </Switch>
     </Provider>
   );
