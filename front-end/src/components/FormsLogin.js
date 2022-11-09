@@ -20,7 +20,13 @@ export default function FormsLogin() {
       localStorage.setItem('user', JSON.stringify(data));
       localStorage.setItem('token', data.token);
 
-      history.push('/customer/products');
+      const user = JSON.parse(localStorage.getItem('user'));
+
+      if (user.role === 'customer') {
+        history.push('/customer/products');
+      } else if (user.role === 'seller') {
+        history.push('/seller/orders');
+      }
     } catch (error) {
       setFailedTryLogin(true);
       setErrorMsg('Não foi possível efetuar login, tente novamente');

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import OrdersBtn from './CustomerOrdersBtn';
+import SellerOrdersBtn from './SellerOrdersBtn';
 import LogOutBtn from './LogOutBtn';
 
 function HeaderSeller() {
@@ -17,7 +17,7 @@ function HeaderSeller() {
   }, [userName]);
   return (
     <div className="buttons-content">
-      <OrdersBtn />
+      <SellerOrdersBtn />
       <h3
         data-testid="customer_products__element-navbar-user-full-name"
       >
