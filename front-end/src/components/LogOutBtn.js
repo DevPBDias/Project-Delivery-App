@@ -5,12 +5,10 @@ function LogOutBtn() {
   const history = useHistory();
 
   const clearLocalStorage = async () => {
-    const verify = history.location.pathname === '/customer/orders/:id';
-    if (!verify) {
-      localStorage.setItem('user', '');
-    }
+    localStorage.clear();
     history.push('/login');
   };
+
   const linkProduct = (
     <button
       type="button"

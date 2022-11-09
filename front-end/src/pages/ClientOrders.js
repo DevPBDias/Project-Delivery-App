@@ -5,7 +5,7 @@ import Header from '../components/Header';
 function ClientOrders() {
   return (
     <div>
-      <Header />
+      <Header pageRoute="PRODUTOS" />
       <MyOrders />
     </div>
   );

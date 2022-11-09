@@ -1,14 +1,31 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-function OrdersBtn() {
+function OrdersBtn({ role }) {
+  const history = useHistory();
+
+  const myOrders = () => {
+    if (role === 'customer') {
+      history.push('/customer/orders');
+    } else if (role === 'seller') {
+      history.push('/seller/orders');
+    }
+  };
+
   const linkProduct = (
-    <Link
+    <button
+      type="button"
+      onClick={ myOrders }
       data-testid="customer_products__element-navbar-link-orders"
-      to="/customer/orders"
     >
       MEUS PEDIDOS
-    </Link>);
+    </button>);
   return (linkProduct);
 }
+
+OrdersBtn.propTypes = {
+  role: PropTypes.string,
+}.isRequired;
+
 export default OrdersBtn;

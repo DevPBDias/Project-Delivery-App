@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import Provider from './context/Provider';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Products from './pages/Products';
 import Checkout from './pages/Checkout';
-<<<<<<< HEAD
 import User from './pages/User';
 import ClientOrders from './pages/ClientOrders';
-=======
 import CustomerOrderDetails from './pages/CustomerOrderDetails';
 import SellerOrder from './pages/SellerOrder';
->>>>>>> c0a45a1bab639ca603ff475892f967deb4378e1c
 
 function App() {
   const [entrance, setEntrance] = useState(false);
-  const [hasToken, setHasToken] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     setEntrance(true);
@@ -24,9 +21,9 @@ function App() {
   useEffect(() => {
     const userLogged = localStorage.getItem('user');
     if (userLogged) {
-      setHasToken(true);
+      history.push('/customer/products');
     }
-  }, []);
+  }, [history]);
 
   return (
     <Provider>
@@ -38,11 +35,6 @@ function App() {
         />
         <Route exact path="/login" component={ Login } />
         <Route exact path="/customer/products" component={ Products } />
-        <Route
-          exact
-          path="/login"
-          render={ () => (hasToken ? <Redirect to="/customer/products" /> : null) }
-        />
         <Route exact path="/customer/orders" component={ ClientOrders } />
         <Route exact path="/customer/orders/:id" component={ User } />
         <Route exact path="/customer/checkout" component={ Checkout } />
