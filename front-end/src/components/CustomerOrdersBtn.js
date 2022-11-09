@@ -7,7 +7,7 @@ function OrdersBtn() {
       data-testid="customer_products__element-navbar-link-orders"
       to="/customer/orders"
     >
-      MEUS PERDIDOS
+      MEUS PEDIDOS
     </Link>);
   return (linkProduct);
 }

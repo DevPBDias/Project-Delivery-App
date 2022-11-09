@@ -1,10 +1,10 @@
-// import React, { useEffect, useState } from 'react';
-import React from 'react';
-import customerOrders from '../services/mockSales';
-// import { requestData } from '../services/requests';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { requestData } from '../services/requests';
 
 function MyOrders() {
-//   const [orders, setOrders] = useState();
+  const [myOrders, setMyOrders] = useState();
+  const history = useHistory();
 
   function dateFormat(orderDate) {
     const date = new Date(orderDate);
@@ -25,36 +25,52 @@ function MyOrders() {
     return result;
   }
 
-  //   useEffect(() => {
-  //      function sales() {
-  //       // const { id } = localStorage.getItem('userLogged');
-  //       // const ordersUser = await requestData(`/customer/orders/${id}`);
-  //      setOrders(day);
-  //       console.log(orders);
-  //       // setOrders(ordersUser);
-  //     }
-  //     sales();
-  //   }, [orders]);
+  useEffect(() => {
+    async function sales() {
+      try {
+        const userInfo = JSON.parse(localStorage.getItem('user'));
+
+        const getOrders = await requestData('orders');
+
+        const findOrdersUser = getOrders.filter((mine) => mine.userId === userInfo.id);
+
+        setMyOrders(findOrdersUser);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    sales();
+  }, []);
 
   return (
     <div>
-      {
-        customerOrders.map((order, index) => (
-          <div key={ index }>
-            <p data-testid="customer_orders__element-order-id-<id>">
-              {`Pedido 000${index + 1}`}
-            </p>
-            <p data-testid=" customer_orders__element-delivery-status-<id>">
-              {`${order.status}`}
-            </p>
-            <p data-testid="customer_orders__element-order-date-<id>">
-              {`${dateFormat(order.saleDate)}`}
-            </p>
-            <p data-testid="customer_orders__element-card-price-<id>">
-              {`${moneyBrFormat(order.totalPrice)}`}
-            </p>
-          </div>))
-      }
+      { myOrders
+        && myOrders.map((order, index) => (
+          <button
+            key={ index }
+            type="button"
+            name="card-order-button"
+            onClick={ () => history.push(`/customer/orders/${index + 1}`) }
+          >
+            <div key={ index }>
+              <p data-testid={ `customer_orders__element-order-id-${index + 1}` }>
+                {`Pedido 000${index + 1}`}
+              </p>
+              <p data-testid={ `customer_orders__element-delivery-status-${index + 1}` }>
+                {`${order.status}`}
+              </p>
+              <p data-testid={ `customer_orders__element-order-date-${index + 1}` }>
+                {`${dateFormat(order.saleDate)}`}
+              </p>
+              <p data-testid={ `customer_orders__element-card-price-${index + 1}` }>
+                {`${moneyBrFormat(order.totalPrice)}`}
+              </p>
+              <p>--------------------</p>
+            </div>
+          </button>
+        ))}
+
     </div>
   );
 }
