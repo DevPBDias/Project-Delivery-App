@@ -1,32 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductsBtn from './ProductsBtn';
 import OrdersBtn from './CustomerOrdersBtn';
 import LogOutBtn from './LogOutBtn';
 
 function Header() {
-  const [userName, setName] = useState();
+  const user = JSON.parse(localStorage.getItem('user'));
+  const [userRole, setUserRole] = useState();
+
   useEffect(() => {
-    async function sales() {
-      try {
-        const user = JSON.parse(localStorage.getItem('user'));
-        setName(user.name);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    sales();
-  }, [userName]);
+    setUserRole(user.role);
+  }, [user.role]);
+
   return (
     <div className="buttons-content">
-      <ProductsBtn />
-      <OrdersBtn />
+      <ProductsBtn role={ userRole } />
+      <OrdersBtn role={ userRole } />
       <h3
         data-testid="customer_products__element-navbar-user-full-name"
       >
-        {userName}
+        {user.name}
       </h3>
       <LogOutBtn />
     </div>
   );
 }
+
 export default Header;

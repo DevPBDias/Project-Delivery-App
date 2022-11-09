@@ -34,7 +34,6 @@ function CheckOutBtn() {
         '/customer/checkout',
         bodyCheckout,
       );
-      console.log(getCheckout);
 
       history.push(`/customer/orders/${getCheckout}`);
     } catch (error) {
