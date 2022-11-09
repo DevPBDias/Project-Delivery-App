@@ -7,13 +7,9 @@ function MyOrders() {
   const history = useHistory();
 
   function dateFormat(orderDate) {
-    const date = new Date(orderDate);
-    const day = date.getDate();
-    const month = date.getMonth();
-    const fullYear = date.getFullYear().toString();
-    const result = `${day}/${month}/${fullYear}`;
+    const date = new Date(orderDate).toLocaleDateString('pt-BR');
 
-    return result;
+    return date;
   }
 
   function moneyBrFormat(orderPrice) {
