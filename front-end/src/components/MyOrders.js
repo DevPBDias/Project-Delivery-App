@@ -7,9 +7,13 @@ function MyOrders() {
   const history = useHistory();
 
   function dateFormat(orderDate) {
-    const date = new Date(orderDate).toLocaleDateString();
+    const date = new Date(orderDate);
+    const day = date.getDate();
+    const month = date.getMonth();
+    const fullYear = date.getFullYear().toString();
+    const result = `${day}/${month}/${fullYear}`;
 
-    return date;
+    return result;
   }
 
   function moneyBrFormat(orderPrice) {
@@ -64,6 +68,7 @@ function MyOrders() {
               <p>--------------------</p>
             </div>
           </button>
+          // </Link>
         ))}
 
     </div>
