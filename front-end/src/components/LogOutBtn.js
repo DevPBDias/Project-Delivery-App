@@ -1,20 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function LogOutBtn() {
-  const clearLocalStorage = () => {
-    localStorage.setItem('user', '');
+  const history = useHistory();
+
+  const clearLocalStorage = async () => {
+    localStorage.clear();
+    history.push('/login');
   };
+
   const linkProduct = (
-    <button type="button" onClick={ clearLocalStorage }>
-      <Link
-        data-testid="customer_products__element-navbar-link-logout"
-        to="/login"
-      >
-
-        Sair
-
-      </Link>
+    <button
+      type="button"
+      data-testid="customer_products__element-navbar-link-logout"
+      onClick={ clearLocalStorage }
+    >
+      Sair
     </button>
   );
   return (linkProduct);
