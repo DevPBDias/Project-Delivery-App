@@ -1,11 +1,11 @@
 import React from 'react';
-import HeaderSeller from '../components/HeaderSeller';
+import Header from '../components/Header';
 import FunctionSellerOrder from '../components/FunctionSellerOrders';
 
 function SellerOrder() {
   return (
     <div>
-      <HeaderSeller />
+      <Header />
       <FunctionSellerOrder />
     </div>
   );
