@@ -40,3 +40,10 @@ export const requestOrderDetails = async (endpoint, body) => {
   console.log('OrderDetails:', data);
   return data;
 };
+
+export const xxx = async (endpoint, body) => {
+  const { data } = await api.patch(endpoint, body)
+    .catch((error) => error.response.data);
+  console.log('xxx', data);
+  return data;
+};

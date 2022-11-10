@@ -8,6 +8,7 @@ import Checkout from './pages/Checkout';
 import ClientOrders from './pages/ClientOrders';
 import CustomerOrderDetails from './pages/CustomerOrderDetails';
 import SellerOrder from './pages/SellerOrder';
+import SellerDetails from './pages/SellerDetails';
 
 function App() {
   const [entrance, setEntrance] = useState(false);
@@ -41,6 +42,7 @@ function App() {
         <Route exact path="/register" component={ Register } />
         <Route exact path="/customer/orders/:id" component={ CustomerOrderDetails } />
         <Route exact path="/seller/orders" component={ SellerOrder } />
+        <Route exact path="/seller/orders/:id" component={ SellerDetails } />
       </Switch>
     </Provider>
   );
