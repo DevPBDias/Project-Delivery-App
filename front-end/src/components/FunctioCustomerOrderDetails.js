@@ -106,7 +106,9 @@ export default function FunctionCustomerOrderDetails() {
                 data-testid={ 'customer_order_details__element-order'
                  + `-table-unit-price-${index}` }
               >
-                {prod.price}
+                {
+                  `${formatPrice(prod.price)}`
+                }
               </th>
               <th
                 data-testid={ 'customer_order_details__element-order-'
