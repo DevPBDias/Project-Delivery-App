@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { setToken, requestRegister } from '../services/requests';
 
@@ -44,11 +45,14 @@ function FormRegister() {
   };
 
   return (
-    <form>
+    <Form
+      className="d-flex align-items-center justify-content-center flex-column
+      rounded p-4 p-sm-3 bg-secondary"
+    >
       <h2>Cadastro</h2>
-      <label htmlFor="name">
-        Nome
-        <input
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="name">Nome</Form.Label>
+        <Form.Control
           type="text"
           name="name"
           id="name"
@@ -56,12 +60,10 @@ function FormRegister() {
           placeholder="Seu nome"
           data-testid="common_register__input-name"
         />
-      </label>
-
-      <br />
-      <label htmlFor="email">
-        Email
-        <input
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="email">Email</Form.Label>
+        <Form.Control
           type="email"
           name="email"
           id="email"
@@ -69,12 +71,10 @@ function FormRegister() {
           placeholder="seu-email@site.com.br"
           data-testid="common_register__input-email"
         />
-      </label>
-
-      <br />
-      <label htmlFor="password">
-        Senha
-        <input
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="password">Senha</Form.Label>
+        <Form.Control
           type="password"
           name="password"
           id="password"
@@ -82,23 +82,21 @@ function FormRegister() {
           placeholder="******"
           data-testid="common_register__input-password"
         />
-      </label>
-
-      <br />
-      <button
+      </Form.Group>
+      <Button
         type="button"
         data-testid="common_register__button-register"
         disabled={ !handleBtn() }
         onClick={ (event) => handleClick(event) }
       >
         Cadastro
-      </button>
+      </Button>
       {
         failedTryLogin ? (
           <p data-testid="common_register__element-invalid_register">{ errorMsg }</p>
         ) : ''
       }
-    </form>
+    </Form>
   );
 }
 
