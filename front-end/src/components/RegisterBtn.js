@@ -1,17 +1,21 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function RegisterBtn() {
   return (
-    <div>
+    <div className="text-center">
       <Link to="/register">
-        <button
+        <Button
+          className="text-light"
+          variant="link"
+          size="sm"
           type="button"
           name="register-button"
           data-testid="common_login__button-register"
         >
           Ainda não tenho conta
-        </button>
+        </Button>
       </Link>
     </div>
   );

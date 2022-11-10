@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Button, Form } from 'react-bootstrap';
 import RegisterBtn from './RegisterBtn';
 import { requestLogin, setToken } from '../services/requests';
 
@@ -38,48 +39,49 @@ export default function FormsLogin() {
   };
 
   return (
-    <div>
-      <form>
-        <label htmlFor="email">
-          Login
-          <input
-            type="email"
-            name="email"
-            value={ email }
-            onChange={ ({ target: { value } }) => setEmail(value) }
-            id="email"
-            placeholder="Email"
-            data-testid="common_login__input-email"
-          />
-        </label>
-        <label htmlFor="senha">
-          Senha
-          <input
-            type="text"
-            name="senha"
-            value={ password }
-            onChange={ ({ target: { value } }) => setPassword(value) }
-            id="senha"
-            placeholder="Senha"
-            data-testid="common_login__input-password"
-          />
-        </label>
+    <Form>
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="email">Login</Form.Label>
+        <Form.Control
+          type="email"
+          name="email"
+          value={ email }
+          onChange={ ({ target: { value } }) => setEmail(value) }
+          id="email"
+          placeholder="Email"
+          data-testid="common_login__input-email"
+        />
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="senha">Senha</Form.Label>
+        <Form.Control
+          type="password"
+          name="senha"
+          value={ password }
+          onChange={ ({ target: { value } }) => setPassword(value) }
+          id="senha"
+          placeholder="Senha"
+          data-testid="common_login__input-password"
+        />
         {
           failedTryLogin ? (
-            <p data-testid="common_login__element-invalid-email">{ errorMsg }</p>
+            <Form.Text data-testid="common_login__element-invalid-email">
+              { errorMsg }
+            </Form.Text>
           ) : ''
         }
-        <button
-          type="button"
-          name="login-button"
-          data-testid="common_login__button-login"
-          onClick={ (event) => handleClick(event) }
-          disabled={ !handleBtn() }
-        >
-          Login
-        </button>
-        <RegisterBtn />
-      </form>
-    </div>
+      </Form.Group>
+      <Button
+        className="mb-3"
+        type="button"
+        name="login-button"
+        data-testid="common_login__button-login"
+        onClick={ (event) => handleClick(event) }
+        disabled={ !handleBtn() }
+      >
+        Login
+      </Button>
+      <RegisterBtn />
+    </Form>
   );
 }

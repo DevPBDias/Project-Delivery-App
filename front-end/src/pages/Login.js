@@ -1,13 +1,22 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import LogoGroup from '../components/LogoGroup';
 import FormsLogin from '../components/FormsLogin';
 
 function Login() {
   return (
-    <div>
-      <LogoGroup />
-      <FormsLogin />
-    </div>
+    <Container
+      className="d-flex align-items-center justify-content-center
+      container-fluid vh-100"
+    >
+      <div
+        className="d-flex align-items-center justify-content-center flex-column
+        rounded p-4 p-sm-3 bg-secondary"
+      >
+        <LogoGroup />
+        <FormsLogin />
+      </div>
+    </Container>
   );
 }
 
