@@ -42,7 +42,7 @@ function App() {
         <Route exact path="/register" component={ Register } />
         <Route exact path="/customer/orders/:id" component={ CustomerOrderDetails } />
         <Route exact path="/seller/orders" component={ SellerOrder } />
-        <Route exact path="/orderDetails" component={ SellerDetails } />
+        <Route exact path="/seller/orders/:id" component={ SellerDetails } />
       </Switch>
     </Provider>
   );
