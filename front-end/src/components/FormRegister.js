@@ -47,7 +47,7 @@ function FormRegister() {
   return (
     <Form
       className="d-flex align-items-center justify-content-center flex-column
-      rounded p-4 p-sm-3 bg-secondary"
+      rounded p-4 p-sm-3 bg-secondary shadow"
     >
       <h2>Cadastro</h2>
       <Form.Group className="mb-3">

@@ -11,7 +11,7 @@ function Login() {
     >
       <div
         className="d-flex align-items-center justify-content-center flex-column
-        rounded p-4 p-sm-3 bg-secondary"
+        rounded p-4 p-sm-3 bg-secondary shadow"
       >
         <LogoGroup />
         <FormsLogin />

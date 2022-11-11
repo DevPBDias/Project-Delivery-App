@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Nav } from 'react-bootstrap';
 
 function ProductsBtn({ role }) {
   const history = useHistory();
@@ -16,13 +17,14 @@ function ProductsBtn({ role }) {
   };
 
   const linkProduct = (
-    <button
+    <Nav.Link
       type="button"
       onClick={ products }
       data-testid="customer_products__element-navbar-link-products"
     >
       PRODUTOS
-    </button>);
+    </Nav.Link>
+  );
   return (linkProduct);
 }
 
