@@ -7,7 +7,7 @@ const moment = require('moment');
 export default function FunctionCustomerOrderDetails() {
   const { id } = useParams();
   const [currOrder, setCurrOrder] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
   const formatPrice = (value) => parseFloat(value)
     .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
   const value = (JSON.parse(localStorage.getItem('selectedSeller'))).name;
@@ -16,7 +16,7 @@ export default function FunctionCustomerOrderDetails() {
     const getOrderDetail = async () => {
       const result = await requestOrderDetails(`/orders/${id}`, id);
       setCurrOrder(result);
-      setProducts(result[0].products);
+      setProduct(result.products);
     };
     getOrderDetail();
   }, []);
@@ -78,45 +78,49 @@ export default function FunctionCustomerOrderDetails() {
               Sub-total
             </th>
           </tr>
-          { products.map((product, index) => (
-            <tr
-              key={ id }
+        </thead>
+        {
+          product.map((prod, index) => (
+            <tbody
+              key={ prod.id }
             >
-              <td
+              <th
                 data-testid={ 'customer_order_details__element-'
-                  + `order-table-item-number-${index}` }
+                + `order-table-item-number-${index}` }
               >
-                { index + 1 }
-              </td>
-              <td
+                {prod.id}
+              </th>
+              <th
                 data-testid={ 'customer_order_details__element-'
-                  + `order-table-name-${index}` }
+                 + `order-table-name-${index}` }
               >
-                { product }
-              </td>
-              <td
+                {prod.name}
+              </th>
+              <th
                 data-testid={ 'customer_order_details__element-order'
-                  + `-table-quantity-${index}` }
+                 + `-table-quantity-${index}` }
               >
-                { product.quantity }
-              </td>
-              <td
+                {prod.quantity}
+              </th>
+              <th
                 data-testid={ 'customer_order_details__element-order'
-                  + `-table-unit-price-${index}` }
-              >
-                { product.price }
-              </td>
-              <td
-                data-testid={ 'customer_order_details__element-order-'
-                  + `table-sub-total-${index}` }
+                 + `-table-unit-price-${index}` }
               >
                 {
-                  formatPrice(price * product.quantity)
+                  `${formatPrice(prod.price)}`
                 }
-              </td>
-            </tr>
-          )) }
-        </thead>
+              </th>
+              <th
+                data-testid={ 'customer_order_details__element-order-'
+                + `table-sub-total-${index}` }
+              >
+                {
+                  `${formatPrice(prod.price * prod.quantity)}`
+                }
+              </th>
+            </tbody>
+          ))
+        }
       </table>
 
       <div

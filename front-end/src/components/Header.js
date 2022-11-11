@@ -7,10 +7,21 @@ import LogOutBtn from './LogOutBtn';
 function Header() {
   const user = JSON.parse(localStorage.getItem('user'));
   const [userRole, setUserRole] = useState();
+  const renderBtn = (role) => {
+    if (role === 'customer') {
+      return (
+        <>
+          <OrdersBtn role={ role } />
+          <ProductsBtn role={ role } />
+        </>
+      );
+    }
+    return <OrdersBtn role={ role } />;
+  };
 
   useEffect(() => {
     setUserRole(user.role);
-  }, [user.role]);
+  }, []);
 
   return (
     <header className="buttons-content bg-secondary px-3 mb-3 shadow">
@@ -25,8 +36,7 @@ function Header() {
             {user.name}
           </Navbar.Text>
           <Nav>
-            <ProductsBtn role={ userRole } />
-            <OrdersBtn role={ userRole } />
+            {renderBtn(userRole)}
             <NavDropdown.Divider />
             <LogOutBtn />
           </Nav>

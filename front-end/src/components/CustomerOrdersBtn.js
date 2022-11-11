@@ -17,7 +17,7 @@ function OrdersBtn({ role }) {
   const linkProduct = (
     <Nav.Link
       type="button"
-      onClick={ myOrders }
+      onClick={ () => myOrders() }
       data-testid="customer_products__element-navbar-link-orders"
     >
       MEUS PEDIDOS
