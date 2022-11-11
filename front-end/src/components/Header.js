@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import ProductsBtn from './ProductsBtn';
 import OrdersBtn from './CustomerOrdersBtn';
 import LogOutBtn from './LogOutBtn';
@@ -9,10 +10,10 @@ function Header() {
   const renderBtn = (role) => {
     if (role === 'customer') {
       return (
-        <div>
+        <>
           <OrdersBtn role={ role } />
           <ProductsBtn role={ role } />
-        </div>
+        </>
       );
     }
     return <OrdersBtn role={ role } />;
@@ -23,15 +24,25 @@ function Header() {
   }, []);
 
   return (
-    <div className="buttons-content">
-      {renderBtn(userRole)}
-      <h3
-        data-testid="customer_products__element-navbar-user-full-name"
-      >
-        {user.name}
-      </h3>
-      <LogOutBtn />
-    </div>
+    <header className="buttons-content bg-secondary px-3 mb-3 shadow">
+      <Navbar expand="lg">
+        <Navbar.Brand href="#home">App de Delivery</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse>
+          <Navbar.Text
+            data-testid="customer_products__element-navbar-user-full-name"
+            className="ms-auto pe-5 fw-bold"
+          >
+            {user.name}
+          </Navbar.Text>
+          <Nav>
+            {renderBtn(userRole)}
+            <NavDropdown.Divider />
+            <LogOutBtn />
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </header>
   );
 }
 

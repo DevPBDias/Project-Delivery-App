@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Button, Card, Col, InputGroup, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Context from '../context/Context';
 
@@ -76,56 +77,71 @@ function ProductCard({
   }, [inputValue]);
 
   return (
-    <div
-      className="products-content"
-    >
-      <p
-        data-testid={ `customer_products__element-card-price-${item.id}` }
-      >
-        {parseFloat(oldValue)
-          .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
-
-      </p>
-      <img
-        data-testid={ `customer_products__img-card-bg-image-${item.id}` }
-        src={ item.urlImage }
-        width="100px"
-        alt="verificar depois"
-      />
-      <p
-        data-testid={ `customer_products__element-card-title-${item.id}` }
-      >
-        {item.name}
-
-      </p>
-      <div>
-        <button
-          name={ item.name }
-          onClick={ handleColumnMinus }
-          data-testid={ `customer_products__button-card-rm-item-${item.id}` }
-          type="button"
+    <Col className="mb-4">
+      <Card className="products-content shadow">
+        <Card.Title
+          className="text-center pt-2 bg-light rounded-top"
+          style={ { height: '56px' } }
+          data-testid={ `customer_products__element-card-title-${item.id}` }
         >
-          -
+          {item.name}
 
-        </button>
-        <input
-          name={ item.name }
-          value={ inputValue }
-          onChange={ onChangeHandler }
-          size="1"
-          data-testid={ `customer_products__input-card-quantity-${item.id}` }
-        />
-        <button
-          name={ item.name }
-          onClick={ handleColumnPlus }
-          data-testid={ `customer_products__button-card-add-item-${item.id}` }
-          type="button"
+        </Card.Title>
+        <div
+          className="m-auto"
+          style={ { maxWidth: '214px', maxHeight: '214px', overflow: 'hidden' } }
         >
-          +
+          <Card.Img
+            data-testid={ `customer_products__img-card-bg-image-${item.id}` }
+            src={ item.urlImage }
+            alt="verificar depois"
+            style={ { maxHeight: '214px' } }
+          />
+        </div>
+        <Card.Body className="d-flex bg-light rounded-bottom">
+          <Card.Text
+            data-testid={ `customer_products__element-card-price-${item.id}` }
+            className="text-center fw-bold m-0"
+          >
+            {parseFloat(oldValue)
+              .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
 
-        </button>
-      </div>
-    </div>
+          </Card.Text>
+          <InputGroup
+            size="xs"
+            className="ms-auto"
+            style={ { width: '120px' } }
+          >
+            <Button
+              className="btn-danger ms-auto fw-bold fs-4 py-0 lh-1"
+              name={ item.name }
+              onClick={ handleColumnMinus }
+              data-testid={ `customer_products__button-card-rm-item-${item.id}` }
+              type="button"
+            >
+              -
+            </Button>
+            <Form.Control
+              className="py-0 lh-1"
+              name={ item.name }
+              value={ inputValue }
+              onChange={ onChangeHandler }
+              size="1"
+              data-testid={ `customer_products__input-card-quantity-${item.id}` }
+            />
+            <Button
+              className="btn-success fw-bold fs-4 py-0 lh-1"
+              name={ item.name }
+              onClick={ handleColumnPlus }
+              data-testid={ `customer_products__button-card-add-item-${item.id}` }
+              type="button"
+            >
+              +
+            </Button>
+          </InputGroup>
+        </Card.Body>
+      </Card>
+    </Col>
   );
 }
 ProductCard.propTypes = {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
 
 function LogOutBtn() {
   const history = useHistory();
@@ -10,13 +11,13 @@ function LogOutBtn() {
   };
 
   const linkProduct = (
-    <button
+    <Nav.Link
       type="button"
       data-testid="customer_products__element-navbar-link-logout"
       onClick={ clearLocalStorage }
     >
       Sair
-    </button>
+    </Nav.Link>
   );
   return (linkProduct);
 }

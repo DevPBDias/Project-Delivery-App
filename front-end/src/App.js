@@ -8,6 +8,7 @@ import Checkout from './pages/Checkout';
 import ClientOrders from './pages/ClientOrders';
 import CustomerOrderDetails from './pages/CustomerOrderDetails';
 import SellerOrder from './pages/SellerOrder';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import SellerDetails from './pages/SellerDetails';
 
 function App() {

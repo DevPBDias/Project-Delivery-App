@@ -4,13 +4,10 @@ import RenderCards from '../components/RenderCards';
 
 function Products() {
   return (
-
-    <div>
-      <header>
-        <Header />
-      </header>
+    <>
+      <Header />
       <RenderCards />
-    </div>
+    </>
   );
 }
 

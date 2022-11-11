@@ -4,13 +4,11 @@ import '../App.css';
 
 function LogoGroup() {
   return (
-    <div>
-      <img
-        src={ logo }
-        width="200px"
-        alt="Logo do grupo"
-      />
-    </div>
+    <img
+      src={ logo }
+      width="200px"
+      alt="Logo do grupo"
+    />
   );
 }
 
