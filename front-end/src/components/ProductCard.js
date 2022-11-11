@@ -89,7 +89,7 @@ function ProductCard({
         </Card.Title>
         <div
           className="m-auto"
-          style={ { maxWidth: '259px', maxHeight: '259px', overflow: 'hidden' } }
+          style={ { maxWidth: '214px', maxHeight: '214px', overflow: 'hidden' } }
         >
           <Card.Img
             data-testid={ `customer_products__img-card-bg-image-${item.id}` }
