@@ -12,6 +12,8 @@ O aplicativo foi desenvolvido para:
 
 - Se a pessoa cliente faz o pedido, o mesmo deve aparecer para a pessoa vendedora em seu dash de pedidos após a atualização da página. A pessoa cliente, por sua vez, deve ter as informações sobre seu pedido quando sua página for atualizada, ou seja, ter informações se o pedido está sendo preparado ou se já saiu pra entrega
 
+Foi desenvolvido por mim: a tela de login, a estrutura da requisição da api, tela de pedidos do cliente e alguns testes do front-end.
+
 
 ## Tecnologias:
 <div>
